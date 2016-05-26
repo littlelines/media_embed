@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     media_embed (0.0.1)
-      rails (~> 4.2.6)
+      rails (>= 4)
 
 GEM
   remote: https://rubygems.org/
