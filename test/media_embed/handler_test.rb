@@ -12,7 +12,7 @@ class HandlerTest < ActiveSupport::TestCase
                     )
 
   VIMEO_URLS = %w( vimeo.com/8888
-                   vimeo.com/8888?some-param
+                   vimeo.com/8888?some=param
                    player.vimeo.com/video/8888
                    vimeo.com/channels/channel-name/8888
                    vimeo.com/groups/groups-name/8888
