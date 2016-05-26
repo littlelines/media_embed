@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    media_embed (0.0.1)
+    media_embed (0.0.2)
       rails (>= 4)
 
 GEM
