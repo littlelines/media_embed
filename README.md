@@ -37,6 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 + Support Soundcloud and other podcasts
 + Continue to build regex/template matchers for any other embeddable media
 + Update README to indicate usage outside of Rails/allow usage outside of Rails
++ Allow embed options
 + Flesh out tests
 
 ## Contributing
