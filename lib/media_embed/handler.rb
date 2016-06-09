@@ -2,11 +2,11 @@ module MediaEmbed
   module Handler
     CODE = -1
 
-    def embed(url)
-      return template_for(url)
+    def embed(url, options = {})
+      return template_for(url, options)
     end
 
-    def template_for(url)
+    def template_for(url, options = {})
       template = if match = youtube?(url)
                    Video.youtube_template(match[CODE])
                  elsif match = vimeo?(url)

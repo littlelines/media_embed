@@ -1,21 +1,18 @@
 module MediaEmbed
   class Video
-    def self.youtube_template(code)
-      source = "http://youtube.com/embed/#{code}"
-
-      return iframe_structure(source)
+    def self.youtube_template(code, options = {})
+      return iframe("//www.youtube.com/embed/#{code}/enablejsapi=1", options)
     end
 
-    def self.vimeo_template(code)
-      source = "//player.vimeo.com/video/#{code}"
-
-      return iframe_structure(source, ['webkitallowfullscreen', 'mozallowfullscreen'])
+    def self.vimeo_template(code, options = {})
+      return iframe("//player.vimeo.com/video/#{code}", options)
     end
 
     private
 
-    def self.iframe_structure(source, options = [])
-      "<iframe src='#{source}' frameborder='0' #{options.join(' ')} allowfullscreen></iframe>"
+    def self.iframe(source, options = {})
+      "<iframe src='#{source}' #{options.map { |key, value| "#{key}='#{value}'" }.join(' ')}></iframe>"
     end
   end
 end
+
