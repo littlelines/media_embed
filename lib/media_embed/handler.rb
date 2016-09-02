@@ -8,11 +8,11 @@ module MediaEmbed
 
     def template_for(url, options = {})
       template = if match = youtube?(url)
-                   Video.youtube_template(match[CODE])
+                   Video.youtube_template(match[CODE], options)
                  elsif match = vimeo?(url)
-                   Video.vimeo_template(match[CODE])
+                   Video.vimeo_template(match[CODE], options)
                  elsif match = soundcloud?(url)
-                   Podcast.soundcloud_template(match[CODE])
+                   Podcast.soundcloud_template(match[CODE], options)
                  else
                    ''
                  end
