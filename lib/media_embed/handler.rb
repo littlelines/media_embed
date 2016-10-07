@@ -6,6 +6,20 @@ module MediaEmbed
       return template_for(url, options)
     end
 
+    def youtube?(url)
+      url.match youtube_regex
+    end
+
+    def vimeo?(url)
+      url.match vimeo_regex
+    end
+
+    def soundcloud?(url)
+      url.match soundcloud_regex
+    end
+
+    protected
+
     def template_for(url, options = {})
       template = if match = youtube?(url)
                    Video.youtube_template(match[CODE], options)
@@ -18,18 +32,6 @@ module MediaEmbed
                  end
 
       return template
-    end
-
-    def youtube?(url)
-      url.match youtube_regex
-    end
-
-    def vimeo?(url)
-      url.match vimeo_regex
-    end
-
-    def soundcloud?(url)
-      url.match soundcloud_regex
     end
 
     def youtube_regex
