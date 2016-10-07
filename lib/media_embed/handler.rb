@@ -20,7 +20,6 @@ module MediaEmbed
       return template
     end
 
-
     def youtube?(url)
       url.match youtube_regex
     end
@@ -46,4 +45,3 @@ module MediaEmbed
     end
   end
 end
-
