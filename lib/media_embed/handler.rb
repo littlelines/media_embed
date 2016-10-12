@@ -3,7 +3,7 @@ module MediaEmbed
     CODE = -1
 
     def embed(url, options = {})
-      return template_for(url, options)
+      template_for(url, options)
     end
 
     def youtube?(url)
@@ -35,15 +35,15 @@ module MediaEmbed
     end
 
     def youtube_regex
-      /youtu(\.be|be\.com)\/(watch\?v=|embed\/|)([^?\s]*)/
+      %r{youtu(\.be|be\.com)/(watch\?v=|embed/|)([^?\s]*)}
     end
 
     def vimeo_regex
-      /vimeo\.com\/(channels\/\D*|groups\/\D*|album\/\d*\/video\/|video\/|)([^?\s]*)/
+      %r{vimeo\.com/(channels/\D*|groups/\D*|album/\d*/video/|video/|)([^?\s]*)}
     end
 
     def soundcloud_regex
-      /soundcloud.com\/(.*\/[a-zA-Z0-9\-\_]*)/
+      %r{soundcloud.com/(.*/[a-zA-Z0-9\-\_]*)}
     end
   end
 end

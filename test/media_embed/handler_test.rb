@@ -29,14 +29,14 @@ class HandlerTest < Minitest::Test
     end
   end
 
-  test 'it extracts code from all vimeo structures' do
+  test 'extracts code from all vimeo structures' do
     VIMEO_URLS.map { |url| "irrelevantinfo#{url}" }.each do |url|
       match = @klass.vimeo?(url)[CODE]
       assert_equal match, '8888'
     end
   end
 
-  test 'it extracts code for soundcloud structure' do
+  test 'extracts code for soundcloud structure' do
     match = @klass.soundcloud?("irrelevantinfo#{SOUNDCLOUD_URL}")[CODE]
     assert_equal match, 'username/code-for-podcast'
   end
