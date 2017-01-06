@@ -8,6 +8,7 @@ module MediaEmbed
       iframe("//player.vimeo.com/video/#{code}", options)
     end
 
+    private
 
     def self.iframe(source, options = {})
       %(<iframe src='#{source}' #{options.map { |key, value| "#{key}='#{value}'" }.join(' ')}></iframe>)

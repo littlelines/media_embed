@@ -22,21 +22,21 @@ class HandlerTest < Minitest::Test
     @klass = Class.new { include MediaEmbed::Handler }.new
   end
 
-  test 'extracts codes from all youtube structures' do
+  test 'it should extract codes from all youtube structures' do
     YOUTUBE_URLS.map { |url| "irrelevantinfo#{url}" }.each do |url|
       match = @klass.youtube?(url)[CODE]
       assert_equal match, 'CODE'
     end
   end
 
-  test 'extracts code from all vimeo structures' do
+  test 'it should extract code from all vimeo structures' do
     VIMEO_URLS.map { |url| "irrelevantinfo#{url}" }.each do |url|
       match = @klass.vimeo?(url)[CODE]
       assert_equal match, '8888'
     end
   end
 
-  test 'extracts code for soundcloud structure' do
+  test 'it should extract code for soundcloud structure' do
     match = @klass.soundcloud?("irrelevantinfo#{SOUNDCLOUD_URL}")[CODE]
     assert_equal match, 'username/code-for-podcast'
   end
