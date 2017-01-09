@@ -7,10 +7,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     coderay (1.1.1)
+    metaclass (0.0.4)
     method_source (0.8.2)
     minitest (5.9.1)
     minitest-utils (0.3.1)
       minitest
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -26,6 +29,7 @@ PLATFORMS
 DEPENDENCIES
   media_embed!
   minitest-utils
+  mocha
   pry
   pry-nav
   rake

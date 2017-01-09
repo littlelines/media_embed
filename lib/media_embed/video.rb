@@ -1,18 +1,18 @@
 module MediaEmbed
   class Video
-    def self.youtube_template(code, options = {})
-      iframe("//www.youtube.com/embed/#{code}/enablejsapi=1", options)
+
+    VIMEO_WHITELIST_PARAMS =     def self.youtube_template(code, options = {})
+      builder = IframeBuilder.new("//www.youtube.com/embed/#{code}", options, YOUTUBE_SRC_WHITELIST)
+
+      builder.build
     end
 
     def self.vimeo_template(code, options = {})
-      iframe("//player.vimeo.com/video/#{code}", options)
+      builder = IframeBuilder.new("//player.vimeo.com/video/#{code}", options, VIMEO_SRC_WHITELIST)
+
+      builder.build
     end
 
-    private
-
-    def self.iframe(source, options = {})
-      %(<iframe src='#{source}' #{options.map { |key, value| "#{key}='#{value}'" }.join(' ')}></iframe>)
-    end
   end
 end
 

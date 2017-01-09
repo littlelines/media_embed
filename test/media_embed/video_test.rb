@@ -3,23 +3,28 @@ require 'media_embed/video'
 
 class VideoTest < Minitest::Test
 
-  test 'it should wrap a youtube code without options in an iframe tag' do
-    source = '//www.youtube.com/embed/1234/enablejsapi=1'
+  test 'it should call to the IframeBuilder with youtube source and youtube src whitelist' do
+    source = '//www.youtube.com/embed/1234'
+    options = {}
+    whitelist = MediaEmbed::YOUTUBE_SRC_WHITELIST
 
-    assert_equal %(<iframe src='#{source}' ></iframe>), MediaEmbed::Video.youtube_template('1234')
+    builder = MediaEmbed::IframeBuilder.new(source, options, whitelist)
+
+    MediaEmbed::IframeBuilder.expects(:new).with(source, options, whitelist).returns(builder)
+
+    MediaEmbed::Video.youtube_template('1234')
   end
 
-  test 'it should wrap a vimeo code without options in an iframe tag' do
+  test 'it should call the IframeBuilder with vimeo source and vimeo src whitelist' do
     source = '//player.vimeo.com/video/1234'
+    options = {}
+    whitelist = MediaEmbed::VIMEO_SRC_WHITELIST
 
-    assert_equal %(<iframe src='#{source}' ></iframe>), MediaEmbed::Video.vimeo_template('1234')
-  end
+    builder = MediaEmbed::IframeBuilder.new(source, options, whitelist)
 
-  test 'it should wrap a source with options' do
-    source = '//www.youtube.com/embed/1234/enablejsapi=1'
-    iframe_with_options = %(<iframe src='#{source}' width='50px' height='50px'></iframe>)
+    MediaEmbed::IframeBuilder.expects(:new).with(source, options, whitelist).returns(builder)
 
-    assert_equal iframe_with_options, MediaEmbed::Video.youtube_template('1234', width: '50px', height: '50px')
+    MediaEmbed::Video.vimeo_template('1234')
   end
 
 end
