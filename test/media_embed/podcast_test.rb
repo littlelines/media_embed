@@ -3,12 +3,16 @@ require 'media_embed/podcast'
 
 class PodcastTest < Minitest::Test
 
-  test 'should wrap a given code in the soundcloud embed iframe' do
-    code = '1234'
+  test 'it should call to the IframeBuilder with soundcloud source and soundcloud src whitelist' do
+    source = 'https://w.soundcloud.com/player?url=https%3A//soundcloud.com/1234'
+    options = {}
+    whitelist = MediaEmbed::SOUNDCLOUD_SRC_WHITELIST
 
-    iframe = %Q(<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/#{code}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>)
+    builder = MediaEmbed::IframeBuilder.new(source, options, whitelist)
 
-    assert_equal iframe, MediaEmbed::Podcast.soundcloud_template(code)
+    MediaEmbed::IframeBuilder.expects(:new).with(source, options, whitelist).returns(builder)
+
+    MediaEmbed::Podcast.soundcloud_template('1234')
   end
 
 end

@@ -1,7 +1,7 @@
 module MediaEmbed
   class Video
 
-    VIMEO_WHITELIST_PARAMS =     def self.youtube_template(code, options = {})
+    def self.youtube_template(code, options = {})
       builder = IframeBuilder.new("//www.youtube.com/embed/#{code}", options, YOUTUBE_SRC_WHITELIST)
 
       builder.build

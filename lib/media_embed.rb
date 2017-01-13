@@ -41,6 +41,16 @@ module MediaEmbed
                           :title
                         ]
 
-  # SOUNDCLOUD_SRC_WHITELIST
+  SOUNDCLOUD_SRC_WHITELIST = [ :auto_play,
+                               :buying,
+                               :liking,
+                               :download,
+                               :sharing,
+                               :show_artwork,
+                               :show_comments,
+                               :show_playcount,
+                               :show_user,
+                               :start_track
+                             ]
 
 end
