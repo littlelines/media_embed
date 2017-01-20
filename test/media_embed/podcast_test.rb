@@ -6,7 +6,7 @@ class PodcastTest < Minitest::Test
   test 'it should call to the IframeBuilder with soundcloud source and soundcloud src whitelist' do
     source = 'https://w.soundcloud.com/player?url=https%3A//soundcloud.com/1234'
     options = {}
-    whitelist = MediaEmbed::SOUNDCLOUD_SRC_WHITELIST
+    whitelist = MediaEmbed::Podcast::SOUNDCLOUD_SRC_WHITELIST
 
     builder = MediaEmbed::IframeBuilder.new(source, options, whitelist)
 

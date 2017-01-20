@@ -2,20 +2,11 @@ module MediaEmbed
   class IframeBuilder
     extend PrivateAttrAccessors
 
-    private_attr_accessor :url_options, :iframe_options
+    IFRAME_ATTRS_WHITELIST = [ :align, :frameborder, :height,
+      :marginheight, :marginwidth, :name, :width, :allowfullscreen,
+      :webkitallowfullscreen, :mozallowfullscreen ]
 
-    IFRAME_ATTRIBUTES_WHITELIST = [
-      :align,
-      :frameborder,
-      :height,
-      :marginheight,
-      :marginwidth,
-      :name,
-      :width,
-      :allowfullscreen,
-      :webkitallowfullscreen,
-      :mozallowfullscreen
-    ]
+    private_attr_accessor :url_options, :iframe_options
 
     def initialize(source, options = {}, url_params_whitelist = [])
       @source = source
@@ -40,7 +31,7 @@ module MediaEmbed
     end
 
     def split_options
-      self.iframe_options = @options.select { |key, _| IFRAME_ATTRIBUTES_WHITELIST.include?(key) }
+      self.iframe_options = @options.select { |key, _| IFRAME_ATTRS_WHITELIST.include?(key) }
       self.url_options = @options.select { |key, _| @url_params_whitelist.include?(key) }
     end
 

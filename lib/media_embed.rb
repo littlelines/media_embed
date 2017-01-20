@@ -8,49 +8,4 @@ require "media_embed/video"
 require "media_embed/podcast"
 
 module MediaEmbed
-  YOUTUBE_SRC_WHITELIST = [ :autoplay,
-                            :cc_load_policy,
-                            :color,
-                            :controls,
-                            :disablekb,
-                            :enablejsapi,
-                            :end,
-                            :fs,
-                            :h1,
-                            :iv_load_policy,
-                            :list,
-                            :listType,
-                            :loop,
-                            :modestbranding,
-                            :origin,
-                            :playlist,
-                            :playsinline,
-                            :rel,
-                            :showinfo,
-                            :start
-                          ]
-
-  VIMEO_SRC_WHITELIST = [ :autopause,
-                          :autoplay,
-                          :badge,
-                          :byline,
-                          :color,
-                          :loop,
-                          :player_id,
-                          :portrait,
-                          :title
-                        ]
-
-  SOUNDCLOUD_SRC_WHITELIST = [ :auto_play,
-                               :buying,
-                               :liking,
-                               :download,
-                               :sharing,
-                               :show_artwork,
-                               :show_comments,
-                               :show_playcount,
-                               :show_user,
-                               :start_track
-                             ]
-
 end
