@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    media_embed (0.1.2)
+    media_embed (1.0.0)
 
 GEM
   remote: https://rubygems.org/
