@@ -2,6 +2,7 @@ require 'test_helper'
 require 'media_embed/handler'
 
 class HandlerTest < Minitest::Test
+
   CODE = MediaEmbed::Handler::CODE
 
   YOUTUBE_URLS = %w(youtube.com/watch?v=CODE
@@ -40,4 +41,5 @@ class HandlerTest < Minitest::Test
     match = @klass.soundcloud?("irrelevantinfo#{SOUNDCLOUD_URL}")[CODE]
     assert_equal match, 'username/code-for-podcast'
   end
+
 end

@@ -3,23 +3,54 @@ require 'media_embed/video'
 
 class VideoTest < Minitest::Test
 
-  test 'it should wrap a youtube code without options in an iframe tag' do
-    source = '//www.youtube.com/embed/1234/enablejsapi=1'
+  # YOUTUBE
 
-    assert_equal %(<iframe src='#{source}' ></iframe>), MediaEmbed::Video.youtube_template('1234')
+  test 'it should call to the IframeBuilder with youtube source and youtube src whitelist' do
+    source = '//www.youtube.com/embed/1234'
+    options = {}
+    consolidated_options = { consolidated: 'options' }
+    whitelist = MediaEmbed::Video::YOUTUBE_SRC_WHITELIST
+
+    builder = MediaEmbed::IframeBuilder.new(source, options, whitelist)
+
+    MediaEmbed::Video.expects(:consolidated_options).with(:youtube, {}).returns(consolidated_options)
+    MediaEmbed::IframeBuilder.expects(:new).with(source, consolidated_options, whitelist).returns(builder)
+
+    MediaEmbed::Video.youtube_template('1234')
   end
 
-  test 'it should wrap a vimeo code without options in an iframe tag' do
+  test 'it should call to OptionsHandler with Youtube Options' do
+    handler = MediaEmbed::OptionsHandler.new(:youtube, {})
+
+    MediaEmbed::OptionsHandler.expects(:new).with(:youtube, {}).returns(handler)
+    MediaEmbed::OptionsHandler.any_instance.expects(:consolidate_options).returns({})
+
+    MediaEmbed::Video.consolidated_options(:youtube, {})
+  end
+
+  # VIMEO
+
+  test 'it should call the IframeBuilder with vimeo source and vimeo src whitelist' do
     source = '//player.vimeo.com/video/1234'
+    options = {}
+    consolidated_options = { consolidated: 'options' }
+    whitelist = MediaEmbed::Video::VIMEO_SRC_WHITELIST
 
-    assert_equal %(<iframe src='#{source}' ></iframe>), MediaEmbed::Video.vimeo_template('1234')
+    builder = MediaEmbed::IframeBuilder.new(source, options, whitelist)
+
+    MediaEmbed::Video.expects(:consolidated_options).with(:vimeo, {}).returns(consolidated_options)
+    MediaEmbed::IframeBuilder.expects(:new).with(source, consolidated_options, whitelist).returns(builder)
+
+    MediaEmbed::Video.vimeo_template('1234')
   end
 
-  test 'it should wrap a source with options' do
-    source = '//www.youtube.com/embed/1234/enablejsapi=1'
-    iframe_with_options = %(<iframe src='#{source}' width='50px' height='50px'></iframe>)
+  test 'it should call to OptionsHandler with Vimeo Options' do
+    handler = MediaEmbed::OptionsHandler.new(:vimeo, {})
 
-    assert_equal iframe_with_options, MediaEmbed::Video.youtube_template('1234', width: '50px', height: '50px')
+    MediaEmbed::OptionsHandler.expects(:new).with(:vimeo, {}).returns(handler)
+    MediaEmbed::OptionsHandler.any_instance.expects(:consolidate_options).returns({})
+
+    MediaEmbed::Video.consolidated_options(:vimeo, {})
   end
 
 end

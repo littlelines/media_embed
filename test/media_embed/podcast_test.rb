@@ -3,12 +3,41 @@ require 'media_embed/podcast'
 
 class PodcastTest < Minitest::Test
 
-  test 'should wrap a given code in the soundcloud embed iframe' do
-    code = '1234'
+  # SOUNDCLOUD
 
-    iframe = %Q(<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/#{code}&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>)
+  test 'it should call to the IframeBuilder with soundcloud source, consolidated options, and soundcloud src whitelist' do
+    source = 'https://w.soundcloud.com/player?url=https%3A//soundcloud.com/1234'
+    options = {}
+    consolidated_options = { consolidated: 'options' }
+    whitelist = MediaEmbed::Podcast::SOUNDCLOUD_SRC_WHITELIST
 
-    assert_equal iframe, MediaEmbed::Podcast.soundcloud_template(code)
+    builder = MediaEmbed::IframeBuilder.new(source, options, whitelist)
+
+    MediaEmbed::Podcast.expects(:consolidated_options).with(:soundcloud, {}).returns(consolidated_options)
+    MediaEmbed::IframeBuilder.expects(:new).with(source, consolidated_options, whitelist).returns(builder)
+
+    MediaEmbed::Podcast.soundcloud_template('1234')
+  end
+
+  test 'it should call to OptionsHandler with options' do
+    handler = MediaEmbed::OptionsHandler.new(:soundcloud, {})
+
+    MediaEmbed::OptionsHandler.expects(:new).with(:soundcloud, {}).returns(handler)
+    MediaEmbed::OptionsHandler.any_instance.expects(:consolidate_options).returns({})
+
+    MediaEmbed::Podcast.consolidated_options(:soundcloud, {})
+  end
+
+  test 'it should interpret :autoplay as :auto_play' do
+    handler = MediaEmbed::OptionsHandler.new(:soundcloud, {})
+    options = { autoplay: true }
+
+    MediaEmbed::OptionsHandler.expects(:new).with(:soundcloud, {}).returns(handler)
+    MediaEmbed::OptionsHandler.any_instance.expects(:consolidate_options).returns(options)
+
+    expected_options = { auto_play: true }
+
+    assert_equal expected_options, MediaEmbed::Podcast.consolidated_options(:soundcloud, {})
   end
 
 end
