@@ -1,12 +1,10 @@
 module MediaEmbed
   class IframeBuilder
-    extend PrivateAttrAccessors
-
     IFRAME_ATTRS_WHITELIST = [ :align, :frameborder, :height,
       :marginheight, :marginwidth, :name, :width, :allowfullscreen,
       :webkitallowfullscreen, :mozallowfullscreen ]
 
-    private_attr_accessor :url_options, :iframe_options
+    attr_accessor :url_options, :iframe_options
 
     def initialize(source, options = {}, url_params_whitelist = [])
       @source = source

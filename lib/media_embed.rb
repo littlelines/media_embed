@@ -1,6 +1,5 @@
 require "media_embed/version"
 require "media_embed/railtie" if defined? Rails
-require "media_embed/private_attr_accessors"
 
 require "media_embed/iframe_builder"
 require "media_embed/handler"

@@ -65,4 +65,5 @@ class IframeBuilderTest < Minitest::Test
 
     assert_equal iframe, builder.build
   end
+
 end
