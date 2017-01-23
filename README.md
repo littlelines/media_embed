@@ -114,6 +114,7 @@ for more information about the accepted parameters.
 #### Vimeo Parameters
 
 | Attribute Name | Accepted Values | Description |
+| --- | --- | --- |
 | autopause | true/false | pause when another video starts playing |
 | autoplay | true/false | play when iframe loads |
 | badge | true/false | enable/disable badge |
