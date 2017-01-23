@@ -10,15 +10,31 @@ module MediaEmbed
       :color, :loop, :player_id, :portrait, :title ]
 
     def self.youtube_template(code, options = {})
-      builder = IframeBuilder.new("//www.youtube.com/embed/#{code}", options, YOUTUBE_SRC_WHITELIST)
+      source = "//www.youtube.com/embed/#{code}"
+
+      builder = IframeBuilder.new(
+        source,
+        consolidated_options(:youtube, options),
+        YOUTUBE_SRC_WHITELIST
+      )
 
       builder.build
     end
 
     def self.vimeo_template(code, options = {})
-      builder = IframeBuilder.new("//player.vimeo.com/video/#{code}", options, VIMEO_SRC_WHITELIST)
+      source = "//player.vimeo.com/video/#{code}"
+
+      builder = IframeBuilder.new(
+        source,
+        consolidated_options(:vimeo, options),
+        VIMEO_SRC_WHITELIST
+      )
 
       builder.build
+    end
+
+    def self.consolidated_options(service, options)
+      OptionsHandler.new(service, options).consolidate_options
     end
 
   end
