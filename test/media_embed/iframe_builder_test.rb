@@ -66,4 +66,15 @@ class IframeBuilderTest < Minitest::Test
     assert_equal iframe, builder.build
   end
 
+  test 'it should deal with the allowfullscreen options correctly' do
+    options = { allowfullscreen: true, webkitallowfullscreen: true, mozallowfullscreen: true }
+    src_whitelist = []
+
+    builder = MediaEmbed::IframeBuilder.new(@source, options, src_whitelist)
+
+    iframe = %(<iframe src="#{@source}" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>)
+
+    assert_equal iframe, builder.build
+  end
+
 end

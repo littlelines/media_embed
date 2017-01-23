@@ -74,9 +74,9 @@ Any of the following whitelisted options can be specified:
 + marginwidth             - left/right margin in pixels
 + name                    - name of iframe element
 + width                   - width in pixels
-+ allowfullscreen         - true by default, set 'false' to remove
-+ webkitallowfullscreen   - true by default, set 'false' to remove
-+ mozallowfullscreen      - true by default, set 'false' to remove
++ allowfullscreen         - not present by default
++ webkitallowfullscreen   - not present by default
++ mozallowfullscreen      - not present by default
 
 See [w3schools.com IFrame tag page](http://www.w3schools.com/tags/tag_iframe.asp)
 for more information about the accepted attributes.
