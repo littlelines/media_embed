@@ -28,4 +28,16 @@ class PodcastTest < Minitest::Test
     MediaEmbed::Podcast.consolidated_options(:soundcloud, {})
   end
 
+  test 'it should interpret :autoplay as :auto_play' do
+    handler = MediaEmbed::OptionsHandler.new(:soundcloud, {})
+    options = { autoplay: true }
+
+    MediaEmbed::OptionsHandler.expects(:new).with(:soundcloud, {}).returns(handler)
+    MediaEmbed::OptionsHandler.any_instance.expects(:consolidate_options).returns(options)
+
+    expected_options = { auto_play: true }
+
+    assert_equal expected_options, MediaEmbed::Podcast.consolidated_options(:soundcloud, {})
+  end
+
 end

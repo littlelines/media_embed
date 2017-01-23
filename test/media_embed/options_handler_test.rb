@@ -41,4 +41,14 @@ class OptionsHandlerTest < Minitest::Test
     assert_equal options, handler.consolidate_options
   end
 
+  test 'it should interpret :autoplay and :auto_play the same' do
+    options = { soundcloud: { auto_play: true }, autoplay: false }
+
+    handler = MediaEmbed::OptionsHandler.new(:soundcloud, options)
+
+    expected_options = { autoplay: true }
+
+    assert_equal expected_options, handler.consolidate_options
+  end
+
 end

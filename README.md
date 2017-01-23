@@ -123,18 +123,29 @@ for more information about the accepted parameters.
 
 #### Soundcloud Parameters
 
-+ auto\_play      - play when iframe loads (can use `autoplay` or `auto_play`)
-+ buying          - show/hide buy buttons
-+ liking          - show/hide like buttons
-+ download        - show/hide download buttons
-+ sharing         - show/hide sharing buttons
-+ show_artwork    - show/hide artwork
-+ show_comments   - show/hide comments
-+ show_playcount  - show/hide playcount
-+ show_user       - show/hide uploader username
-+ start_track     - start at the given track # in a playlist
++ auto\_play          - true/false (will also respond to 'autoplay')
++ buying              - true/false (show/hide buy buttons)
++ color               - hex code (color play button and other controls)
++ default_height      - a number that overrides the player's autoscale
++ default_width       - a number that overrides the player's autoscale
++ download            - true/false (show/hide download buttons)
++ enable_api          - true/false (enable the Javascript API callbacks)
++ font                - overrides the default font
++ sharing             - true/false (show/hide share buttons)
++ show_artwork        - true/false
++ show_bpm            - true/false
++ show_comments       - true/false
++ show_playcount      - true/false
++ show_user           - true/false
++ single_active       - true/false (toggle on/off other players on page on play)
++ start_track         - number, indicating which track in the playlist to start on
++ text_buy_set        - a string to point to the buy link
++ text_buy_track      - a string to point to the buy link
++ text_download_track - a string to point to the download link
++ theme_color         - hex code (player background color)
 
 See the [Soundcloud Widget API docs](https://developers.soundcloud.com/docs/api/html5-widget#params)
+or [the Widget docs](https://developers.soundcloud.com/docs/widget#parameters)
 for more information about the accepted parameters.
 
 #### General Options Notes
