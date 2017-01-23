@@ -1,9 +1,9 @@
 # MediaEmbed
 
-Easily embed media into haml/erb templates, bypassing the need to use JavaScript
+Easily embed media (with options) into haml/erb templates, bypassing the need to use JavaScript
 APIs if desired.
 
-It comes bundled with a railtie for automatic Rails integration.
+This gem comes bundled with a railtie for automatic Rails integration.
 
 Currently supports:
 
@@ -34,14 +34,15 @@ Or install it yourself as:
 
 ## Usage
 
-Include `MediaEmbed::Handler` into your class and use the `embed` method.
+Include `MediaEmbed::Handler` into your class and use the `embed` method with an
+optional options hash.
 
 ```ruby
 class Post
   include MediaEmbed::Handler
 
-  def media
-    embed(@url)
+  def media(options = {})
+    embed(@url, options)
   end
 end
 ```
@@ -50,7 +51,7 @@ If you're using Rails, you can directly embed your URLs into your template:
 
 ```erb
 <div id='my-fancy-media'>
-  <%= embed(url).html_safe %>
+  <%= embed(url, @options).html_safe %>
 </div>
 ```
 
