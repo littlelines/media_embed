@@ -67,83 +67,90 @@ Any of the following whitelisted options can be specified:
 
 #### IFrame Attributes
 
-+ align                   - align iframe compared to surrounding elements
-+ frameborder             - display border
-+ height                  - height in pixels
-+ marginheight            - top/bottom margin in pixels
-+ marginwidth             - left/right margin in pixels
-+ name                    - name of iframe element
-+ width                   - width in pixels
-+ allowfullscreen         - not present by default
-+ webkitallowfullscreen   - not present by default
-+ mozallowfullscreen      - not present by default
+| Attribute Name        | Accepted Values                   | Description                                   |
+| --------------------- | --------------------------------- | --------------------------------------------- |
+| align                 | left/right/top/middle/bottom      | align iframe compared to surrounding elements |
+| frameborder           | 0/1                               | display border                                |
+| height                | "#{n}px"                          | height in pixels                              |
+| marginheight          | "#{n}px"                          | top/bottom margin in pixels                   |
+| marginwidth           | "#{n}px"                          | left/right margin in pixels                   |
+| name                  | a string                          | name of iframe element                        |
+| width                 | "#{n}px"                          | width in pixels                               |
+| allowfullscreen       | true/false                        | allow full screen                             |
+| webkitallowfullscreen | true/false                        | allow fullscreen for webkit                   |
+| mozallowfullscreen    | true/false                        | allow fullscreen for mozilla                  |
 
 See [w3schools.com IFrame tag page](http://www.w3schools.com/tags/tag_iframe.asp)
 for more information about the accepted attributes.
 
 #### Youtube Parameters
 
-+ autoplay       - start playing video when iframe loads
-+ cc_load_policy  - closed captions
-+ color           - red or white, white disables modestbranding
-+ controls        - display controls
-+ disablekb       - disable keyboard controls
-+ enablejsapi     - set origin to domain if using
-+ end             - stop video at (n) seconds from start
-+ fs              - show fullscreen button in player
-+ h1              - set the player's interface language
-+ iv_load_policy  - show video annotations
-+ list            - used with listType
-+ listType        - used with list (search, playlist, or user_uploads)
-+ loop            - loop video or playlist
-+ modestbranding  - do not display YouTube logo in control bar
-+ origin          - extra security measure with IFrame API
-+ playlist        - comma separated list of video IDs to play
-+ playsinline     - play inline in HTML5 player on iOS
-+ rel             - show related videos at end
-+ showinfo        - show video metadata
-+ start           - start video in seconds from start
+| Attribute Name | Accepted Values | Description |
+| --- | --- | --- |
+| autoplay | true/false | start playing the video when iframe loads |
+| cc\_load\_policy | true/false | always show closed captions, no matter the user's settings |
+| color | red/white | color of progress bar (white disables modestbranding) |
+| controls | true/false | display controls |
+| disablekb | true/false | disable keyboard controls |
+| enablejsapi | true/false | enables JS API (set origin to domain if using) |
+| end | "#{n}" | stop video at #{n} seconds from start |
+| fs | true/false | show fullscreen button in player |
+| h1 | language code | set the player's interface language |
+| iv\_load\_policy | true/false | show video annotations |
+| list | depends on listType | see Iframe API reference (linked below table) |
+| listType | search, playlist, or user\_uploads | see Iframe API reference (linked below table) |
+| loop | true/false | loop video or playlist |
+| modestbranding | true/false | do not display YouTube logo in control bar |
+| origin | domain name | extra security measure with IFrame API |
+| playlist | comma separated list of video IDs | video IDs for videos to play in IFrame as a playlist |
+| playsinline | true/false | play inline with HTML5 player on iOS |
+| rel | true/false | show related videos at the end of the video |
+| showinfo | true/false | show video metadata |
+| start | "#{n}" | start video #{n} seconds from start |
 
 See the [IFrame Player API reference](https://developers.google.com/youtube/player_parameters)
 for more information about the accepted parameters.
 
 #### Vimeo Parameters
 
-+ autopause - pause when another video starts playing
-+ autoplay  - play when iframe loads
-+ badge     - enable/disable badge
-+ byline    - show user's byline on video
-+ color     - color of video controls in hexa
-+ loop      - loop video when it reaches the end
-+ player_id - unique id to pass back with app JS API responses
-+ portrait  - show user's portrait on video
-+ title     - show title on video
+| Attribute Name | Accepted Values | Description |
+| autopause | true/false | pause when another video starts playing |
+| autoplay | true/false | play when iframe loads |
+| badge | true/false | enable/disable badge |
+| byline | true/false | show user's byline on the video |
+| color | hex code | color of video controls |
+| loop | true/false | loop video when it reaches the end |
+| player\_id | unique ID | ID t pass back with app JS API responses |
+| portrait | true/false | show user's portrait on video |
+| title | true/false | show title on video |
 
 See the [player embedding reference](https://developer.vimeo.com/player/embedding)
 for more information about the accepted parameters.
 
 #### Soundcloud Parameters
 
-+ auto\_play          - true/false (will also respond to 'autoplay')
-+ buying              - true/false (show/hide buy buttons)
-+ color               - hex code (color play button and other controls)
-+ default_height      - a number that overrides the player's autoscale
-+ default_width       - a number that overrides the player's autoscale
-+ download            - true/false (show/hide download buttons)
-+ enable_api          - true/false (enable the Javascript API callbacks)
-+ font                - overrides the default font
-+ sharing             - true/false (show/hide share buttons)
-+ show_artwork        - true/false
-+ show_bpm            - true/false
-+ show_comments       - true/false
-+ show_playcount      - true/false
-+ show_user           - true/false
-+ single_active       - true/false (toggle on/off other players on page on play)
-+ start_track         - number, indicating which track in the playlist to start on
-+ text_buy_set        - a string to point to the buy link
-+ text_buy_track      - a string to point to the buy link
-+ text_download_track - a string to point to the download link
-+ theme_color         - hex code (player background color)
+| Attribute Name | Accepted Values | Description |
+| --- | --- | --- |
+| auto\_play | true/false | play video when iframe loads (can also use 'autoplay' in embed method options hash) |
+| buying | true/false | show/hide buy buttons |
+| color | hex code | color for controls |
+| default\_height | number | overrides the player's autoscale |
+| default\_width | number | overrides the player's autoscale |
+| download | true/false | show/hide download buttons |
+| enable\_api | true/false | enable JavaScript API callbacks |
+| font | font name | overrides the default font |
+| sharing | true/false | show/hide share buttons |
+| show\_artwork | true/false | show/hide artwork |
+| show\_bpm | true/false | show/hide beats/minute |
+| show\_comments | true/false | show/hide comments |
+| show\_playcount | true/false | show number of plays |
+| show\_user | true/false | show user info |
+| single\_active | true/false | toggle off other plays on page when pressing play |
+| start\_track | number | which track in the playlist to start on |
+| text\_buy\_set | string | link text to buy link |
+| text\_buy\_track | string | link text to buy link |
+| text\_download\_track | string | link text to download link |
+| theme\_color | hex code | player background color |
 
 See the [Soundcloud Widget API docs](https://developers.soundcloud.com/docs/api/html5-widget#params)
 or [the Widget docs](https://developers.soundcloud.com/docs/widget#parameters)
